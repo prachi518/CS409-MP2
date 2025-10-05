@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Movie, Genre } from "../types";
 import { discoverMovies, getGenres } from "../services/api";
 import MovieCard from "../components/MovieCard";

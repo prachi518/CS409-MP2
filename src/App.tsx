@@ -23,9 +23,7 @@
 //   );
 // }
 
-import React from 'react';
 import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
-// import { BrowserRouter, Routes, Rou } from 'react-router-dom';
 import './App.css';
 
 // Import the three main views

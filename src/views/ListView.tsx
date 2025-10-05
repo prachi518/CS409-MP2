@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Movie } from "../types";
 import { searchMovies, discoverMovies } from "../services/api";
 import useDebounce from "../utils/useDebounce";
