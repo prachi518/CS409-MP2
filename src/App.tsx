@@ -24,7 +24,8 @@
 // }
 
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter, Routes, Rou } from 'react-router-dom';
 import './App.css';
 
 // Import the three main views
@@ -35,6 +36,7 @@ import DetailView from './views/DetailView';
 function App() {
   return (
     <div className="App">
+      <BrowserRouter basename="/CS409-MP2">
       <header className="App-header">
         <h1><Link to="/">Movies App</Link></h1>
         <nav>
@@ -43,12 +45,13 @@ function App() {
       </header>
 
       <main>
-        <Routes>
-          <Route path="/" element={<ListView />} />
-          <Route path="/gallery" element={<GalleryView />} />
-          <Route path="/movie/:id" element={<DetailView />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<ListView />} />
+            <Route path="/gallery" element={<GalleryView />} />
+            <Route path="/movie/:id" element={<DetailView />} />
+          </Routes>
       </main>
+      </BrowserRouter>
     </div>
   );
 }
