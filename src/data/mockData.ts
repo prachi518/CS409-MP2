@@ -35,7 +35,17 @@ const results: Movie[] = [
     vote_average: 8.1,
     genre_ids: [18],
   },
-  // add a few more...
+  {
+    id: 4,
+    title: "Mock Horror Movie",
+    overview: "Spooky mock horror flick.",
+    poster_path: null,
+    release_date: "2018-10-31",
+    vote_average: 7.0,
+    genre_ids: [27],
+  },
 ];
 
-export default { results, genres };
+const mockData = { results, genres };
+
+export default mockData;

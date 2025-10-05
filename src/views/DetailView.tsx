@@ -6,7 +6,6 @@ import { Movie } from "../types";
 export default function DetailView() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const location = useLocation();
   const [movie, setMovie] = useState<Movie | null>(null);
   const [list, setList] = useState<Movie[]>([]); // list to navigate prev/next
 
