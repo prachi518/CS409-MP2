@@ -1,0 +1,33 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+
+body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background:#fafafa; color:#222; }
+.app-header { display:flex; justify-content:space-between; align-items:center; padding:12px 18px; background:#111; color:#fff; }
+.app-header nav a { margin-left:12px; color:#fff; text-decoration:none; }
+.container { padding:20px; max-width:1100px; margin: 0 auto; }
+.controls { margin:12px 0; display:flex; gap:12px; align-items:center; }
+.list { list-style:none; padding:0; margin:0; }
+.list-item { padding:8px 0; border-bottom:1px solid #eee; }
+.gallery { display:grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-top:12px; }
+.movie-card { border-radius:8px; overflow:hidden; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.08); padding:8px; text-align:center; }
+.movie-card img { width:100%; height:240px; object-fit:cover; background:#ddd; }
+.movie-card-info { padding:8px 4px; }
+.genre-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.genre-filters button { padding:6px 10px; }
+.genre-filters button.active { background:#111; color:#fff; }
+.detail { display:flex; gap:20px; margin-top:12px; }
+.detail img { width:300px; height:450px; object-fit:cover; background:#ddd; }
+.detail-info { max-width:600px; }
+.detail-controls button { margin-right:8px; padding:8px 12px; }
