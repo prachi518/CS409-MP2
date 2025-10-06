@@ -2,11 +2,17 @@ import { useEffect, useState } from "react";
 import { Movie, Genre } from "../types";
 import { discoverMovies, getGenres } from "../services/api";
 import MovieCard from "../components/MovieCard";
+import { useSearchParams } from "react-router-dom";
 
 export default function GalleryView() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [items, setItems] = useState<Movie[]>([]);
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [selected, setSelected] = useState<number[]>([]);
+  
+  // Get selected genres from URL
+  const selected = searchParams.get('genres')
+    ? searchParams.get('genres')!.split(',').map(Number)
+    : [];
 
   useEffect(() => {
     async function load() {
@@ -22,7 +28,19 @@ export default function GalleryView() {
   }, []);
 
   function toggleGenre(id: number) {
-    setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+    const newSelected = selected.includes(id)
+      ? selected.filter((x) => x !== id)
+      : [...selected, id];
+    
+    if (newSelected.length > 0) {
+      setSearchParams({ genres: newSelected.join(',') });
+    } else {
+      setSearchParams({});
+    }
+  }
+
+  function clearGenres() {
+    setSearchParams({});
   }
 
   const filtered = items.filter((m) => {
@@ -45,7 +63,7 @@ export default function GalleryView() {
             {g.name}
           </button>
         ))}
-        <button onClick={() => setSelected([])} className="clear-btn" >Clear</button>
+        <button onClick={clearGenres} className="clear-btn">Clear</button>
       </div>
 
       <div className="gallery">
