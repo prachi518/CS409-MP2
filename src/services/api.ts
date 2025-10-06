@@ -2,7 +2,8 @@ import axios from "axios";
 import { Movie, GenreListResponse } from "../types";
 import mockData from "../data/mockData";
 
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+// const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_KEY = "3f539a608b7b0059c1d2dbd6dd895412";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_BASE = "https://image.tmdb.org/t/p/w500";
 

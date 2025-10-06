@@ -45,7 +45,7 @@ export default function GalleryView() {
             {g.name}
           </button>
         ))}
-        <button onClick={() => setSelected([])}>Clear</button>
+        <button onClick={() => setSelected([])} className="clear-btn" >Clear</button>
       </div>
 
       <div className="gallery">

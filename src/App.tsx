@@ -1,28 +1,3 @@
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import './App.css';
 
@@ -36,7 +11,7 @@ function App() {
     <div className="App">
       <BrowserRouter basename="/CS409-MP2">
       <header className="App-header">
-        <h1><Link to="/">Movies App</Link></h1>
+        <h1><Link to="/">NightScreen</Link></h1>
         <nav>
           <Link to="/">List</Link> | <Link to="/gallery">Gallery</Link>
         </nav>
