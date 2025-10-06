@@ -1,13 +1,10 @@
-/* ============================================
-   App.css - Main Layout & Header Styles
-   ============================================ */
-
-
+/*============================================
+    Index.css - Global Styles & Component Styles
+============================================ */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #ffffff;
 }
 
@@ -15,7 +12,7 @@ body {
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem 2rem;
 }
 
 /* Page Title */
@@ -41,7 +38,6 @@ h2 {
 /* Search Bar */
  .search-bar {
   width: 100%;
-  /* max-width: 480px; */
   padding: 1rem 2rem 1rem 1.5rem;
   font-size: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -64,7 +60,7 @@ h2 {
 /* Controls */
 .controls {
   display: flex;
-  align-items: center;
+  justify-content: center; 
   gap: 1rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -73,7 +69,7 @@ h2 {
 
 .controls label {
   font-weight: 600;
-  color: #ffffff;
+  color: #ffffff;  
 }
 
 .controls select,
@@ -152,8 +148,10 @@ h2 {
 }
 
 .list-item a:hover {
-  /* color: #f5576c; */
-  color: #f093fb;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
 }
 

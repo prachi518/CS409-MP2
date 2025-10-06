@@ -3,16 +3,44 @@ import { Movie } from "../types";
 import { searchMovies, discoverMovies } from "../services/api";
 import useDebounce from "../utils/useDebounce";
 import SearchBar from "../components/SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 type SortKey = "title" | "release_date" | "vote_average";
 
 export default function ListView() {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // Get all params from URL
+  const query = searchParams.get('search') || '';
+  const sortKey = (searchParams.get('sort') as SortKey) || 'title';
+  const asc = searchParams.get('order') !== 'desc'; // default to asc if not specified
+  
   const debouncedQuery = useDebounce(query, 250);
   const [items, setItems] = useState<Movie[]>([]);
-  const [sortKey, setSortKey] = useState<SortKey>("title");
-  const [asc, setAsc] = useState(true);
+
+  const handleSearchChange = (value: string) => {
+    const newParams: any = {};
+    if (value) newParams.search = value;
+    if (sortKey !== 'title') newParams.sort = sortKey;
+    if (!asc) newParams.order = 'desc';
+    setSearchParams(newParams);
+  };
+
+  const handleSortChange = (newSortKey: SortKey) => {
+    const newParams: any = {};
+    if (query) newParams.search = query;
+    if (newSortKey !== 'title') newParams.sort = newSortKey;
+    if (!asc) newParams.order = 'desc';
+    setSearchParams(newParams);
+  };
+
+  const handleOrderToggle = () => {
+    const newParams: any = {};
+    if (query) newParams.search = query;
+    if (sortKey !== 'title') newParams.sort = sortKey;
+    if (asc) newParams.order = 'desc'; // toggle: if currently asc, make it desc
+    setSearchParams(newParams);
+  };
 
   useEffect(() => {
     async function load() {
@@ -50,12 +78,12 @@ export default function ListView() {
   return (
     <div className="container">
       <h2>Movie List</h2>
-      <SearchBar value={query} onChange={setQuery} placeholder="Search movies..." />
+      <SearchBar value={query} onChange={handleSearchChange} placeholder="Search movies..." />
 
       <div className="controls">
         <label>
           Sort by:
-          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)}>
+          <select value={sortKey} onChange={(e) => handleSortChange(e.target.value as SortKey)}>
             <option value="title">Title</option>
             <option value="release_date">Release Date</option>
             <option value="vote_average">Rating</option>
@@ -64,17 +92,19 @@ export default function ListView() {
 
         <label>
           Order:
-          <button onClick={() => setAsc((s) => !s)}>{asc ? "Asc" : "Desc"}</button>
+          <button onClick={handleOrderToggle}>{asc ? "Asc" : "Desc"}</button>
         </label>
       </div>
 
       <ul className="list">
         {sorted().map((m) => (
-          <li key={m.id} className="list-item">
+          <div className="list-item" key={m.id}>
             <Link to={`/movie/${m.id}`}>
-              <strong>{m.title}</strong> — {m.release_date} — ⭐ {m.vote_average ?? "—"}
+              <strong>{m.title}</strong>
             </Link>
-          </li>
+            <span className="movie-date">{m.release_date}</span>
+            <span className="movie-rating">⭐ {m.vote_average ?? "—"}</span>
+          </div>
         ))}
       </ul>
     </div>
