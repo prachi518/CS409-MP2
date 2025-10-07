@@ -1,4 +1,3 @@
-import React from "react";
 import { Movie } from "../types";
 import { posterUrl } from "../services/api";
 import { Link } from "react-router-dom";
